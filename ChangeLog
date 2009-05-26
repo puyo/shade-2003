@@ -1,0 +1,69 @@
+2002-02-09  Greg McIntyre  <greg@puyo.cjb.net>
+
+	* Started tile set (now map has collision detection and default actions, but takes much longer to load).
+
+	* Started default action functionality.
+
+2002-02-08  Greg McIntyre  <greg@puyo.cjb.net>
+
+	* Corrected map viewport (was incorrect, causing inefficiency when scrolled off the origin).
+
+2002-02-07  Greg McIntyre  <greg@puyo.cjb.net>
+
+	* Started unit movement (no collision detection).
+
+	* Added Game class, to handle each game.
+
+	* Started Unit/Party class heirarchy.
+
+2002-01-19  Greg McIntyre  <greg@puyo.cjb.net>
+
+	* Added GPL notice to all the top of all source files.
+
+2002-01-17  Greg McIntyre  <greg@puyo.cjb.net>
+
+	* Started changelog (with emacs changelog mode). Previous changelog is pasted below.
+
+2001-09-22 to 2002-01-17
+
+	* Implemented external C++ Display library, which uses SDL.
+
+	* Revised Skill system. Now binary Abilities with underlying Attribute tests.
+
+	* Redid some of the documentation (in XML).
+
+	* Finalised documentation format.
+	
+Sat Sep 22 15:22:07 EST 2001
+	* Mucked about with documentation formats, including
+		* LaTeX + LaTeX2HTML
+		* XML
+		* My own invention, Gem.
+		(Gave up and will come back to this later.)
+	* Went through and cleaned up external (GTML) documentation a bit.
+	* Devised and documented skill test method.
+
+Tue Sep  4 11:49:42 EST 2001
+	* Changed information provided to keyboard handlers. Now (Key name, boolean modifiers, ASCII code).
+	* Cleaned and documented Keyboard.
+	* Cleaned and documented Display.
+
+Sun Sep  2 10:29:15 EST 2001
+	* Implemented new font design. Still largely untested.
+	* Implemented basic map displaying.
+	* Implemented window clipping.
+
+Sat Sep  1 19:30:50 EST 2001
+	* Reviewed Display.
+	* Implemented basic window handling.
+	* Separated map window from Display. Now MapWindow.
+	* Implemented some drawing primitives.
+	* Redesigned font support to permit multiple fonts of different types (fixed/variable width).
+
+Fri Aug 31 13:36:12 EST 2001
+	* Added basic screen handling to Display.
+
+Thu Aug 30 13:51:54 EST 2001
+	* Started change log.
+	* Fixed Makefile dependency checking.
+	* Implemented keyboard handling (taken from Ruby implementation).

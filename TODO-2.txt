@@ -1,0 +1,148 @@
+Decisions
+---------
+
+o No mouse support -> no GUI buttons, etc. Just labels, text fields
+  and shortcut keys.
+o Remove OpenGL dependance, as without HW accel, it's too slow.
+o Make a one-room demo full of interesting, scripted stuff.
+o Make the map file format text, so that it can be edited with a text
+  editor.
+
+The Plan
+--------
+
+o One-Room Demo
+  o Replace OpenGL QUAD tiling with SDL_Surface tiling, to remove OGL
+    dependance.
+  o Implement XML map reader (see crib.xml + crib.rb).
+  o Refine screen layout.
+  o Implement SDL_ttf support.
+  o Implement Dialog window (text entry).
+
+Screen Layout
+-------------
+
+Main Screen
+##################################################################################
+#                                                                                #
+#                                                                                #
+#                                                                                #
+#                                                                                #
+#                                                                                #
+#                               ##--###-####--##                                 #
+#                               #====#=.=#=..==#                                 #
+#                               #=...#..u#==..=#                                 #
+#                               #=...#/###=...=#                                 #
+#                               #......../..=.=#                                 #
+#                               ###/############                                 #
+#                               #=.h=#...#                                       #
+#                               #=h.h/@..+                                       #
+#                               #..h.#.h.#                                       #
+#                               ##--###-##                                       #
+#                                                                                #
+#                                                                                #
+#                                                                                #
+#                                                                                #
+#                                                                                #
+#--------------------------------------------------------------------[Messages]--#
+# You open the door.                                                           ^ # <- latest message (highlighted)
+# You see a door.                                                              = #   (PAGE UP)
+#                                                                              : #
+#                                                                              v # <- older messages (PAGE DN)
+#----------------------------------------------------------------------[Status]--#
+# X\........  drugged,sleepy,paranoid                                            #
+#-------------------------------------------------------------------[Shortcuts]--#
+# Inventory [i] Biography [b]                                         Menu [ESC] #
+##################################################################################
+             ^             ^
+             |             |
+      keyboard shortcuts (this menu line can be toggled on/off in the options)
+
+Inventory
+##################################################################################
+#                                     |::::::::::::::::::::::::::::: Inventory ::# <- section
+#                                     |                                          #
+#                                     | ( + 20 x FMJ.45                      ) ^ #
+#                                     | ( + 4 x shotgun shells               ) = #
+#                                     | > / shotgun                          < : #
+#                                     |   / really really really really lo...  : #
+#                                     |   ) interesting gadget                 : #
+#                                     |                                        : # <- slider
+#                                     |                                        : #
+#                                     |               .                        : #
+#                ...                  |               .                        : #
+#                                     |               .                        : #
+#                                     |                                        : #
+#                                     |                                        : #
+#                                     |                                        v #
+#                                     | Drop [d] Equip [e] Give [g]              #
+#                                     |:::::::::::::::::::::::::::::: Info [i] ::# <- togglable section
+#                                     |                                   [l]ess #
+#                                     | / shotgun                              ^ #
+#                                     |                                        = #
+#-------------------------------------| A heavy chunk of metal.                : #
+# You open the door.                  |                                        : # <- slider with diff. k.b. shortcuts
+# You see a door.                     | Damage : ?                             : #
+#                                     | Range  : ?                             : #
+#                                     | Weight : 2.5 kg                        : #
+#-------------------------------------|                                        v #
+# X\........  drugged,sleepy,paranoid |                                   [m]ore #
+#-------------------------------------|                                          #
+#                                     |                              Close [ESC] #
+##################################################################################
+                                                 ^
+                                                 |
+                                        'slide out' window
+
+-> make info float over entire window, avoiding cursor
+
+Biography
+##################################################################################
+#:::::::::::::::::::::::: Biography ::|                                          #
+# #..  Name: Greggles                 |                                          #
+# /@.  Age : 21                       |                                          #
+# #.h  Weight: 70 kg                  |                                          #
+#      Height: 6'0"                   |                                          #
+#                                     |                                          #
+# Wounds: X\\.......                  |                                          #
+# Status: drugged,sleepy,paranoid     |                                          #
+#                                     |                                          #
+# Strength    : #:::: (poor)          |                                          #
+# Agility     : ##::: (average)       |                                          #
+# Intelligence: ##### (excellent)     |                                          #
+# Intuition   : ###:: (good)          |                  ...                     #
+# Dexterity   : ####: (very good)     |                                          #
+# Perception  : ##::: (average)       |                                          #
+# Charisma    : ###:: (good)          |                                          #
+#                                     |                                          #
+#                                     |                                          #
+#                                     |                                          #
+#                                     |                                          #
+#                                     |                                          #
+#                                     |                                          #
+#                                     |--------------------------------Messages--#
+#                                     |                                          #
+#                                     |                                          #
+#                                     |                                          #
+#                                     |                                          #
+#                                     |----------------------------------Status--#
+#                                     |                                          #
+#                                     |------------------------------------------#
+#                         Close [ESC] |                                          #
+##################################################################################
+
+
+Attributes window:
+
+::::::::::::::::::::::::Attributes ::
+
+   - Science                       ^
+     + Chemistry (3)               =
+     - Programming                 =
+ >     - Trojan Horse (2)        < :
+     + Engineering                 :
+   .                               :
+   .                               v
+                         
+                         
+                         

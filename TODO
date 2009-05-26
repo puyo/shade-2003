@@ -1,0 +1,34 @@
+
+TODO
+
+H = High priority
+N = Normal priority
+L = Low priority
+:( = Not Started
+:| = Incomplete
+
+
+ID	Module		Task
+---------------------------------------------------------------------
+L :(	Display		Implement mouse handling (to be used by map editor) (?)
+N :(	Display		Implement simple set of widgets for confirmation, entering strings, scrolling message buffer (think about keyboard handling)
+N :(	Display		Implement drawParagraph
+
+H :|	MapWindow	Map displaying (using C library routine)
+
+H :(	Map			Map and map object design (design pattern for map, units, party, player, NPCs, items, etc.)
+H :(	Map			Map and map object implementation
+H :(	Map			Map update loop
+N :|	Map			Load/Save design
+N :(	Map			Load/Save implementation
+
+L :(	Shade		Title screen
+N :(	Shade		Implement basic keyboard-initiated functions such as 'menu' and 'exit'.
+
+L :|	CVS			Implement CVS use
+
+N :(	Map Editor	...
+
+L :(	Source		Use internal documentation extractor -> rdoc
+
+H :(	Docs		Iron out gaping holes in history/story
