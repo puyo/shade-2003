@@ -10,24 +10,24 @@
 require 'External'
 
 class Display < External::Display
-	class << self
+  class << self
 
-		attr :width
-		attr :height
-		
-		# Open the display with resolution width by height pixels. 
-		# If the display is running in a windowed environment (such as
-		# running in an X window), this opens a new window with a title
-		# bar containing the title provided. Otherwise this sets the
-		# screen resolution directly at a depth sufficient to work in RGBA
-		# (and hence only supported screen resolutions should be passed).
-		def open(title, width, height)
-			@width = width
-			@height = height
-			@handlers = []
-			
-			External::Display.open(title, width, height)
-		end
-	end
+    attr :width
+    attr :height
+
+    # Open the display with resolution width by height pixels. 
+    # If the display is running in a windowed environment (such as
+    # running in an X window), this opens a new window with a title
+    # bar containing the title provided. Otherwise this sets the
+    # screen resolution directly at a depth sufficient to work in RGBA
+    # (and hence only supported screen resolutions should be passed).
+    def open(title, width, height)
+      @width = width
+      @height = height
+      @handlers = []
+
+      External::Display.open(title, width, height)
+    end
+  end
 end
 

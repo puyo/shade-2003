@@ -18,11 +18,11 @@
 // Very simple OO libpng wrapper.
 class PNG {
 	private:
-	png_struct *png;
-	png_info *info;
-	png_info *end_info;
+	png_structp png;
+	png_infop info;
+	png_infop end_info;
 	png_byte **data;
-	
+
 	public:
 
 	PNG() : png(NULL), info(NULL), end_info(NULL) {
@@ -33,11 +33,11 @@ class PNG {
 	}
 
 	unsigned int height() const {
-		return loaded() ? info->height : 0;
+		return loaded() ? png_get_image_height(png, info) : 0;
 	}
 
 	unsigned int width() const {
-		return loaded() ? info->width : 0;
+		return loaded() ? png_get_image_width(png, info) : 0;
 	}
 
 	bool loaded() const {
@@ -72,7 +72,7 @@ class PNG {
 		// Read header bytes.
 		const int number = 8;
 		png_byte header[number];
-		size_t bytes = fread(header, 1, number, fp);
+		fread(header, 1, number, fp);
 
 		// Verify this is a PNG.
 		const bool is_png = !png_sig_cmp(header, 0, number);
@@ -85,13 +85,13 @@ class PNG {
 		if (!png) {
 			return;
 		}
-		
+
 		info = png_create_info_struct(png);
 		if (!info) {
 			png_destroy_read_struct(&png, (png_infopp)NULL, (png_infopp)NULL);
 			return;
 		}
-		
+
 		end_info = png_create_info_struct(png);
 		if (!end_info) {
 			png_destroy_read_struct(&png, &info, (png_infopp)NULL);

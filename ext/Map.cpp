@@ -117,7 +117,7 @@ void Map::draw() const {
 				colour = NUM2UINT(rb_iv_get(u, "@colour"));
 			} else {
 				VALUE items = rb_iv_get(t, "@items");
-				if (RARRAY(items)->len > 0) {
+				if (RARRAY_LEN(items) > 0) {
 					// Draw an item.
 					code = 'i';
 					colour = 0x800000;

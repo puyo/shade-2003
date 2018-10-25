@@ -61,7 +61,7 @@ class Font {
 class Colour {
     public:
         byte r, g, b, a;
-        Colour() : r(r), g(g), b(b), a(a) {}
+        Colour() : r(0), g(0), b(0), a(0) {}
         Colour(byte r, byte g, byte b, byte a=0xFF) : r(r), g(g), b(b) {
             this->a = a;
         }
@@ -147,11 +147,11 @@ void Display::set_size(uint width, uint height) {
     }
 
     // Get video capabilities.
-    const SDL_VideoInfo* info = SDL_GetVideoInfo();    
+    const SDL_VideoInfo* info = SDL_GetVideoInfo();
     if (!info) {
         fprintf(stderr, "Video query failed: %s\n", SDL_GetError());
         exit(1);
-    }    
+    }
 
     uint video_flags =
         SDL_DOUBLEBUF | // Enable double buffering

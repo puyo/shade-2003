@@ -12,16 +12,16 @@
 # Libraries.
 ###############
 
-RUBY_DIR = /usr/lib/ruby/1.8/i486-linux/
+# RUBY_DIR = /usr/lib/ruby/1.8/i486-linux/
 
-# Libraries used.
-OTHER_LIBS = ruby SDL png
+# # Libraries used.
+# OTHER_LIBS = ruby SDL png
 
-# Directories where libraries are installed.
-OTHER_LIB_DIRS = $(SRC_DIRS) $(RUBY_DIR) /usr/lib
+# # Directories where libraries are installed.
+# OTHER_LIB_DIRS = $(SRC_DIRS) $(RUBY_DIR) /usr/lib
 
-# Directories where header files are installed.
-OTHER_INC_DIRS = . $(RUBY_DIR) /usr/include/SDL
+# # Directories where header files are installed.
+# OTHER_INC_DIRS = . $(RUBY_DIR) /usr/include/SDL
 
 ###############
 # Compiler options.
@@ -30,17 +30,20 @@ OTHER_INC_DIRS = . $(RUBY_DIR) /usr/include/SDL
 # CC_FLAGS = $(CC_OPTIONS) $(INC)
 # LD_FLAGS = $(LD_OPTIONS) $(LIB_DIRS) $(LIBS)
 
+
+
 LD = g++
 
 CXXFLAGS = -Wall -O2
 CXXFLAGS += -fpic
-CXXFLAGS += -I$(RUBY_DIR)
-CXXFLAGS += `sdl-config --cflags`
+#CXXFLAGS += -I$(RUBY_DIR)
+CXXFLAGS += `PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/usr/local/opt/ruby@2.3/lib/pkgconfig" pkg-config sdl ruby-2.3 libpng --cflags`
 
 LDFLAGS = -shared
-LDFLAGS += `sdl-config --libs`
-LDFLAGS += -L$(RUBY_DIR) -lruby1.8
+LDFLAGS += `PKG_CONFIG_PATH="/usr/local/opt/ruby@2.3/lib/pkgconfig" pkg-config sdl ruby-2.3 libpng --libs`
+#LDFLAGS += -L$(RUBY_DIR) -lruby1.8
 LDFLAGS += -lpng
+
 
 ###############
 # Targets.
